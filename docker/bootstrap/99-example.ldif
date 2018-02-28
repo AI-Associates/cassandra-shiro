@@ -1,0 +1,33 @@
+version: 1
+
+dn: ou=users,dc=my-company,dc=com
+objectClass: top
+objectClass: organizationalUnit
+ou: users
+
+dn: cn=cass_admin,ou=users,dc=my-company,dc=com
+objectClass: organizationalRole
+objectClass: simpleSecurityObject
+cn: cass_admin
+userPassword: passw0rd
+description: some user
+
+dn: cn=other_user,ou=users,dc=my-company,dc=com
+objectClass: organizationalRole
+objectClass: simpleSecurityObject
+cn: other_user
+userPassword: other_password
+description: other_user
+
+dn: ou=extern,dc=my-company,dc=com
+objectClass: top
+objectClass: organizationalUnit
+ou: extern
+description: external users
+
+dn: cn=extern1,ou=extern,dc=my-company,dc=com
+objectClass: organizationalRole
+objectClass: simpleSecurityObject
+cn: extern1
+userPassword: external_password
+description: external user 1

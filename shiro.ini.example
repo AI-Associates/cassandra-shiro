@@ -1,0 +1,17 @@
+[main]
+securityManager.subjectDAO.sessionStorageEvaluator.sessionStorageEnabled = false
+
+ldapRealm = associates.ai.cassandra.auth.realm.SearchLdapRealm
+ldapRealm.searchFilterPattern = cn={0}
+ldapRealm.searchContext = dc=my-company,dc=com
+
+; one of OBJECT_SCOPE, ONELEVEL_SCOPE, SUBTREE_SCOPE
+ldapRealm.searchScope = SUBTREE_SCOPE
+
+ldapRealm.contextFactory.url = ldap://localhost:1389
+ldapRealm.contextFactory.authenticationMechanism = simple
+
+ldapRealm.contextFactory.systemUsername = cn=admin,dc=my-company,dc=com
+ldapRealm.contextFactory.systemPassword = admin
+
+securityManager.realms = $ldapRealm

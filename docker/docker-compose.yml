@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  ldap-host:
+    image: osixia/openldap:1.1.10
+    command: --copy-service --loglevel debug
+    environment:
+      - LDAP_ORGANISATION="My Company"
+      - LDAP_DOMAIN=my-company.com
+      - LDAP_BASE_DN=dc=my-company,dc=com
+      # cn=admin,$LDAP_BASE_DN
+      - LDAP_ADMIN_PASSWORD=admin
+    volumes:
+      - ./bootstrap:/container/service/slapd/assets/config/bootstrap/ldif/custom
+    ports:
+      - "1389:389"
