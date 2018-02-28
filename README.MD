@@ -71,7 +71,7 @@ cass_admin@cqlsh> ^D
 ## LDAP Search realm
 
 LDAP Search realm `associates.ai.cassandra.auth.realm.SearchLdapRealm` allows you to search for given username using supplied 
-pattern in directory. See `shiro.ini.example` for example config.
+pattern in directory. See [shiro.ini.example](shiro.ini.example) for example config.
 
 ### Multiple realms in same ini file
 
@@ -82,12 +82,12 @@ a simple example using both stock `DefaultLdapRealm` and `SearchLdapRealm` to pe
 
 ## Running with example OpenLDAP server
 
-For testing in development you can use the supplied `docker/docker-compose.yml`
+For testing in development you can use the supplied [docker-compose.yml](docker/docker-compose.yml)
 file which will start an OpenLDAP server compatible with the example config.
 Start container with `docker-compose up -d` and follow setup instructions above.
    
 Connect to LDAP server (e.g. with [Apache Directory Studio](﻿http://directory.apache.org/studio/)) 
-or browse `docker/bootstrap/example.ldif` LDIF file for available usernames.
+or browse [example.ldif](docker/bootstrap/example.ldif) LDIF file for available usernames.
   
-Before changing Cassandra authenticator implementation you can execute `roles.cql` 
+Before changing Cassandra authenticator implementation you can execute [roles.cql](docker/roles.cql) 
 file to configure the available roles (instead of creating them manually).  
