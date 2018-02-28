@@ -6,7 +6,6 @@ Cassandra IAuthenticator implementation using Apache Shiro.
 
 Build JAR file with `mvn clean verify`.
 
-
 Copy `target/cassandra-shiro-1.0-SNAPSHOT-jar-with-dependencies.jar` to c* `lib/`. 
 This contains the authenticator with required dependencies.
 
@@ -69,8 +68,15 @@ cass_admin@cqlsh> ^D
 
 ## LDAP Search realm
 
-LDAP Search realm allows you to search for given username using supplied 
-pattern in directory. See `shiro.ini.example` for example config. 
+LDAP Search realm `associates.ai.cassandra.auth.realm.SearchLdapRealm` allows you to search for given username using supplied 
+pattern in directory. See `shiro.ini.example` for example config.
+
+### Multiple realms in same ini file
+
+Shiro supports multiple realms in one config. Check out [Shiro docs on Realms](﻿https://shiro.apache.org/realm.html#explicit-assignment)
+for more info. See [shiro.ini.multi-realm-example](shiro.ini.multi-realm-example) for
+a simple example using both stock `DefaultLdapRealm` and `SearchLdapRealm` to perform authentication.
+ 
 
 ## Running with example OpenLDAP server
 

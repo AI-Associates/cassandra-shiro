@@ -2,7 +2,8 @@
 securityManager.subjectDAO.sessionStorageEvaluator.sessionStorageEnabled = false
 
 ldapRealm = associates.ai.cassandra.auth.realm.SearchLdapRealm
-ldapRealm.searchFilterPattern = cn={0}
+; placeholder is {} - no zero!
+ldapRealm.searchFilterPattern = cn={}
 ldapRealm.searchContext = dc=my-company,dc=com
 
 ; one of OBJECT_SCOPE, ONELEVEL_SCOPE, SUBTREE_SCOPE
