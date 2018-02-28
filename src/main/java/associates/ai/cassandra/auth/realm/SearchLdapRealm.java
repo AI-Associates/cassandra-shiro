@@ -20,7 +20,7 @@ import javax.naming.ldap.LdapContext;
  * then authenticates users by performing a bind with found DN and original password.
  */
 public class SearchLdapRealm extends AuthenticatingRealm {
-    private static final String UID_PLACEHOLDER = "{}";
+    private static final String UID_PLACEHOLDER = "{0}";
 
     private static final Logger logger = LoggerFactory.getLogger(SearchLdapRealm.class);
 
@@ -62,9 +62,9 @@ public class SearchLdapRealm extends AuthenticatingRealm {
      * <p>
      * An example a pattern could look like this:
      * <p>
-     * <pre>uid={}</pre>
+     * <pre>uid={0}</pre>
      *
-     * @param searchFilterPattern filter pattern to use with placeholder {@code {}} for supplied username
+     * @param searchFilterPattern filter pattern to use with placeholder {@code {0}} for supplied username
      */
     public void setSearchFilterPattern(String searchFilterPattern) {
         this.searchFilterPattern = searchFilterPattern;

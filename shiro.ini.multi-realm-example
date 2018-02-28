@@ -1,0 +1,32 @@
+[main]
+securityManager.subjectDAO.sessionStorageEvaluator.sessionStorageEnabled = false
+
+; This is using DefaultLdapRealm shipped with Shiro.
+; It'll replace {0} placeholder with username supplied via SASL when connecting to Cassandra
+; and try bind with that DN and supplied password.
+
+ldapRealm = org.apache.shiro.realm.ldap.DefaultLdapRealm
+ldapRealm.userDnTemplate = cn={0},ou=users,dc=my-company,dc=com
+ldapRealm.contextFactory.url = ldap://localhost:1389
+ldapRealm.contextFactory.authenticationMechanism = simple
+
+; This is the SearchLdapRealm.
+; First, it'll perform a search in LDAP (after binding as system user - make sure this user has permissions!)
+; Then, if one object is found, it'll bind to LDAP again with the found DN and supplied password.
+; If there's zero or >1 results in LDAP, it'll fail.
+searchLdapRealm = associates.ai.cassandra.auth.realm.SearchLdapRealm
+searchLdapRealm.searchFilterPattern = cn={0}
+searchLdapRealm.searchContext = dc=my-company,dc=com
+
+; one of OBJECT_SCOPE, ONELEVEL_SCOPE, SUBTREE_SCOPE
+searchLdapRealm.searchScope = SUBTREE_SCOPE
+
+searchLdapRealm.contextFactory.url = ldap://localhost:1389
+searchLdapRealm.contextFactory.authenticationMechanism = simple
+
+searchLdapRealm.contextFactory.systemUsername = cn=admin,dc=my-company,dc=com
+searchLdapRealm.contextFactory.systemPassword = admin
+
+; Specify to use both realms in given order
+; ﻿https://shiro.apache.org/realm.html#explicit-assignment
+securityManager.realms = $searchLdapRealm,$ldapRealm

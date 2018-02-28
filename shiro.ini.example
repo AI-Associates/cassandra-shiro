@@ -1,7 +1,9 @@
 [main]
+; required
 securityManager.subjectDAO.sessionStorageEvaluator.sessionStorageEnabled = false
 
 ldapRealm = associates.ai.cassandra.auth.realm.SearchLdapRealm
+; placeholder {0} will be replaced with username passed via Cassandra connection
 ldapRealm.searchFilterPattern = cn={0}
 ldapRealm.searchContext = dc=my-company,dc=com
 
