@@ -2,6 +2,8 @@
 
 Cassandra IAuthenticator implementation using Apache Shiro.
 
+[![Build Status](https://travis-ci.org/AI-Associates/cassandra-shiro.svg?branch=master)](https://travis-ci.org/AI-Associates/cassandra-shiro)
+
 ## Setup
 
 Build JAR file with `mvn clean verify`.
