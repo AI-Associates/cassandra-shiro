@@ -14,6 +14,7 @@
     </scm>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <finalName>${project.artifactId}-${project.version}</finalName>
     </properties>
 
     <licenses>
@@ -25,6 +26,7 @@
     </licenses>
 
     <build>
+        <finalName>${finalName}</finalName>
         <pluginManagement>
             <plugins>
                 <plugin>
