@@ -15,7 +15,7 @@ ldapRealm.contextFactory.authenticationMechanism = simple
 ; Then, if one object is found, it'll bind to LDAP again with the found DN and supplied password.
 ; If there's zero or >1 results in LDAP, it'll fail.
 searchLdapRealm = associates.ai.cassandra.auth.realm.SearchLdapRealm
-searchLdapRealm.searchFilterPattern = cn={}
+searchLdapRealm.searchFilterPattern = cn={0}
 searchLdapRealm.searchContext = dc=my-company,dc=com
 
 ; one of OBJECT_SCOPE, ONELEVEL_SCOPE, SUBTREE_SCOPE

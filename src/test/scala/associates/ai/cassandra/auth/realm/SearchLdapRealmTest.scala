@@ -16,7 +16,7 @@ class SearchLdapRealmTest extends WordSpec with Matchers with MockFactory {
       val contextName = "dn=room,dn=the"
       val username = "mark"
       val password = "johnny_is_my_best_friend"
-      val filterPattern = "uid={}"
+      val filterPattern = "uid={0}"
       val userDn = s"uid=mark,ou=people,$contextName"
 
       val token = new UsernamePasswordToken(username, password)
@@ -33,7 +33,7 @@ class SearchLdapRealmTest extends WordSpec with Matchers with MockFactory {
       }
 
 
-      val expectedFilter = filterPattern.replace("{}", username)
+      val expectedFilter = filterPattern.replace("{0}", username)
 
       (systemContext.search(_: String, _: String, _: SearchControls))
         .expects(contextName, expectedFilter, *)
@@ -65,8 +65,8 @@ class SearchLdapRealmTest extends WordSpec with Matchers with MockFactory {
         val contextName = "ou=people,dn=room,dn=the"
         val username = "doggie"
         val password = "youre_my_fav_customer"
-        val filterPattern = "uid={}"
-        val expectedFilter = filterPattern.replace("{}", username)
+        val filterPattern = "uid={0}"
+        val expectedFilter = filterPattern.replace("{0}", username)
 
 
         val token = new UsernamePasswordToken(username, password)
@@ -103,8 +103,8 @@ class SearchLdapRealmTest extends WordSpec with Matchers with MockFactory {
         val contextName = "ou=people,dn=room,dn=the"
         val username = "lisa"
         val password = "icannottalkrightnow"
-        val filterPattern = "uid={}"
-        val expectedFilter = filterPattern.replace("{}", username)
+        val filterPattern = "uid={0}"
+        val expectedFilter = filterPattern.replace("{0}", username)
 
         val userDn = s"$expectedFilter,$contextName"
 
