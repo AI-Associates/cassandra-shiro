@@ -1,1 +1,11 @@
 language: java
+before_install: mvn install -DskipTests=true -DfinalName=cassandra-shiro-$TRAVIS_TAG
+script: mvn clean verify
+deploy:
+﻿ provider: releases
+  skip_cleanup: true
+  file: target/cassandra-shiro-$TRAVIS_TAG-jar-with-dependencies.jar
+  on:
+    tags
+  api_key:
+    secure: "D/9qTIev4qjqM1Z4zB/X1jRWpS25IWN91JeoQwEEpG8m39tWyIeT8lpIZFP+lG+VVEy2BZeURG0Qoz+y5CrHlMkyPXe4mc6wEXNpKe6CeT7g2kw0OJNZYqDjqrCJKhyA/P0L7DauGJVkng99F0Q4eRWxQMtk6uBJMczG53kpWoxpEVEjEDXN+l+is2iOWleYgmsEABMjzbh8Fc8r9c06wVfhXj8+nafIwtycz3dYNo1UaUyn6G/bmbgYT/b/o+hAGgEbAuKfQlv9CPTBACa4u/vI2lkzaLYclYCaj/sIoaqZu9N8TT3kv7jhdM6/SLwIxpjNjs84y72GAk9+PLGNB4VyZt6PgsnhL1NwmTSNQwHyjAM9qxKngkZsb1LvuUUXbTy0uKNwmDmr4wFlDQnYg4UW5Ju+T0vJlU+fXpvf6T0y+9cAxpMU2JIgmoMNf8yxaXrLIuEi7iE7VdWMtIG6yxpsh9xKE/lRUEXE5b0ygjvoZRlLK8+Sz0i7zpYkTDQMHxfy6ZBlDPwIvkUFdvSdn6Uhl0OsWlrD0Y38/FTXSbEBbJF0yNh8sm7cp6rGOKO2UoTK7v+DoknMDj6c2b39jlyz5M7pfhiGTGtbLCcPHMbUlBEqdcORCcDfeMHzvufSxjw+v3akCWikuwLX1wqOmTIGAImdThfzr+isH1embCQ"
