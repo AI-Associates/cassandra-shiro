@@ -90,7 +90,9 @@ Connect to LDAP server (e.g. with [Apache Directory Studio](﻿http://directory.
 or browse [example.ldif](docker/bootstrap/example.ldif) LDIF file for available usernames.
   
 Before changing Cassandra authenticator implementation you can execute [roles.cql](docker/roles.cql) 
-file to configure the available roles (instead of creating them manually).  ## Release process
+file to configure the available roles (instead of creating them manually).  
+
+## Release process
 
 Prepare release with:
 
