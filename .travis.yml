@@ -1,6 +1,6 @@
 language: java
-before_install: mvn install -DskipTests=true -DfinalName=cassandra-shiro-$TRAVIS_TAG
-script: mvn clean verify
+install: mvn install -DskipTests=true -DfinalName=cassandra-shiro-$TRAVIS_TAG
+script: mvn verify -DfinalName=cassandra-shiro-$TRAVIS_TAG
 deploy:
   provider: releases
   api_key:
