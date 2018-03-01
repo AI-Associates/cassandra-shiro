@@ -8,3 +8,4 @@ deploy:
   file: target/cassandra-shiro-$TRAVIS_TAG-jar-with-dependencies.jar
   on:
     tags: true
+    branch: master
