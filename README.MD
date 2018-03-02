@@ -4,7 +4,7 @@ Cassandra IAuthenticator implementation using Apache Shiro.
 
 [![Build Status](https://travis-ci.org/AI-Associates/cassandra-shiro.svg?branch=master)](https://travis-ci.org/AI-Associates/cassandra-shiro)
 
-## Setup
+## Build and setup
 
 Build JAR file with `mvn clean verify`.
 
@@ -91,3 +91,13 @@ or browse [example.ldif](docker/bootstrap/example.ldif) LDIF file for available 
   
 Before changing Cassandra authenticator implementation you can execute [roles.cql](docker/roles.cql) 
 file to configure the available roles (instead of creating them manually).  
+
+## Release process
+
+Prepare release with:
+
+```
+mvn release:prepare
+``` 
+
+Then Travis should just build the tag created and upload artifact to GitHub releases.
